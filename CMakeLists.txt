@@ -303,10 +303,20 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     # disable min define to allow usage of std::min
     add_definitions(-DNOMINMAX)
 else()
-    # activate sse2 and aes-ni
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2 -maes")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -maes")
+    # JustArchi's optimizations
+    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Ofast")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
 
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 7)
+        set(CMAKE_AR "gcc-ar")
+        set(CMAKE_NM "gcc-nm")
+        set(CMAKE_RANLIB "gcc-ranlib")
+        set(ARCHI_FLAGS "${ARCHI_FLAGS} -flto -fuse-linker-plugin -Wl,-flto")
+    endif()
+
+    set(ARCHI_FLAGS "${ARCHI_FLAGS} -fdata-sections -ffunction-sections -fgcse-las -fgcse-sm -fipa-pta -fivopts -fmodulo-sched -fmodulo-sched-allow-regmoves -frename-registers -ftree-loop-im -ftree-loop-ivcanon -funsafe-loop-optimizations -funswitch-loops -fweb -s -Wl,-O3 -Wl,--as-needed -Wl,--gc-sections -Wl,--relax -Wl,--sort-common -maes") # TODO: Patch source to get rid of -maes
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ARCHI_FLAGS}")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ARCHI_FLAGS}")
 endif()
 
 # activate static libgcc and libstdc++ linking
