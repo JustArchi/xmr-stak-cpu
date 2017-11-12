@@ -148,6 +148,9 @@ endif()
 
 # activate JustArchi's optimizations
 if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Ofast")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
+
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -maes") # TODO: Patch source to get rid of -maes
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native -maes") # TODO: Patch source to get rid of -maes
 endif()
