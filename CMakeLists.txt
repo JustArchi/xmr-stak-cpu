@@ -158,7 +158,7 @@ if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
         set(ARCHI_FLAGS "${ARCHI_FLAGS} -flto -fuse-linker-plugin -Wl,-flto")
     endif()
 
-    set(ARCHI_FLAGS "${ARCHI_FLAGS} -fdata-sections -ffunction-sections -fgcse-las -fgcse-sm -fipa-pta -fivopts -fmodulo-sched -fmodulo-sched-allow-regmoves -frename-registers -ftree-loop-im -ftree-loop-ivcanon -funsafe-loop-optimizations -funswitch-loops -fweb -march=native -s -Wl,-O3 -Wl,--as-needed -Wl,--gc-sections -Wl,--relax -Wl,--sort-common -maes") # TODO: Patch source to get rid of -maes
+    set(ARCHI_FLAGS "${ARCHI_FLAGS} -fdata-sections -ffunction-sections -fgcse-las -fgcse-sm -fipa-pta -fivopts -fmodulo-sched -fmodulo-sched-allow-regmoves -frename-registers -ftree-loop-im -ftree-loop-ivcanon -funsafe-loop-optimizations -funswitch-loops -fweb -s -Wl,-O3 -Wl,--as-needed -Wl,--gc-sections -Wl,--relax -Wl,--sort-common -maes") # TODO: Patch source to get rid of -maes
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ARCHI_FLAGS}")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ARCHI_FLAGS}")
 endif()
