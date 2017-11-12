@@ -151,7 +151,11 @@ if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Ofast")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
 
-    set(ARCHI_FLAGS "-fdata-sections -ffunction-sections -fgcse-las -fgcse-sm -fipa-pta -fivopts -flto -fmodulo-sched -fmodulo-sched-allow-regmoves -frename-registers -ftree-loop-im -ftree-loop-ivcanon -funsafe-loop-optimizations -funswitch-loops -fweb -march=native -s -Wl,-O3 -Wl,-flto -Wl,--as-needed -Wl,--gc-sections -Wl,--relax -Wl,--sort-common -maes") # TODO: Patch source to get rid of -maes
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 7)
+        set(ARCHI_FLAGS "${ARCHI_FLAGS} -flto -Wl,-flto")
+    endif()
+
+    set(ARCHI_FLAGS "${ARCHI_FLAGS} -fdata-sections -ffunction-sections -fgcse-las -fgcse-sm -fipa-pta -fivopts -fmodulo-sched -fmodulo-sched-allow-regmoves -frename-registers -ftree-loop-im -ftree-loop-ivcanon -funsafe-loop-optimizations -funswitch-loops -fweb -march=native -s -Wl,-O3 -Wl,--as-needed -Wl,--gc-sections -Wl,--relax -Wl,--sort-common -maes") # TODO: Patch source to get rid of -maes
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${ARCHI_FLAGS}")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${ARCHI_FLAGS}")
 endif()
