@@ -152,6 +152,9 @@ if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
 
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 7)
+        set(CMAKE_AR "gcc-ar")
+        set(CMAKE_NM "gcc-nm")
+        set(CMAKE_RANLIB "gcc-ranlib")
         set(ARCHI_FLAGS "${ARCHI_FLAGS} -flto -fuse-linker-plugin -Wl,-flto")
     endif()
 
