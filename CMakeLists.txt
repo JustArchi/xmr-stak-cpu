@@ -152,7 +152,7 @@ if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Ofast")
 
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 7)
-        set(ARCHI_FLAGS "${ARCHI_FLAGS} -flto -Wl,-flto")
+        set(ARCHI_FLAGS "${ARCHI_FLAGS} -flto -fuse-linker-plugin -Wl,-flto")
     endif()
 
     set(ARCHI_FLAGS "${ARCHI_FLAGS} -fdata-sections -ffunction-sections -fgcse-las -fgcse-sm -fipa-pta -fivopts -fmodulo-sched -fmodulo-sched-allow-regmoves -frename-registers -ftree-loop-im -ftree-loop-ivcanon -funsafe-loop-optimizations -funswitch-loops -fweb -march=native -s -Wl,-O3 -Wl,--as-needed -Wl,--gc-sections -Wl,--relax -Wl,--sort-common -maes") # TODO: Patch source to get rid of -maes
