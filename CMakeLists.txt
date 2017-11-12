@@ -146,10 +146,10 @@ endif()
 # Compile & Link
 ################################################################################
 
-# activate sse2 and aes-ni
+# activate JustArchi's optimizations
 if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse2 -maes")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse2 -maes")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -maes") # TODO: Patch source to get rid of -maes
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native -maes") # TODO: Patch source to get rid of -maes
 endif()
 
 # activate static libgcc and libstdc++ linking
