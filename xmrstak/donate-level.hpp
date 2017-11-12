@@ -8,6 +8,8 @@
  * Switching is instant, and only happens after a successful connection, so you never loose any hashes.
  *
  * If you plan on changing this setting to 0.0 please consider making a one off donation to our wallets:
+ * JustArchi:
+ * 49JBcqBy5uQbLfVanheYruGNkTQfUope18PakdNxtVw5RJyfQmDoMUjQscwYfhw2ynKfbzmNr5cWhEVDgku5oUd2Jgoi1y5
  * fireice-uk:
  * 4581HhZkQHgZrZjKeCfCJxZff9E3xCgHGF25zABZz7oR71TnbbgiS7sK9jveE6Dx6uMs2LwszDuvQJgRZQotdpHt1fTdDhk
  * psychocrypt:
